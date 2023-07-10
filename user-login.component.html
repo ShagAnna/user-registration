@@ -1,0 +1,42 @@
+<p>user-login works!</p>
+
+<body>
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true"  #checkboxRef>
+
+        <div class="signup">
+            <form>
+                <label for="chk" aria-hidden="true">Register</label>
+               
+                <div class="input-container">
+                    <input type="text" name="txt" placeholder="User name" required [(ngModel)] = "signupObj.userName" #name="ngModel">
+                    <div div class="validation-message" *ngIf="name.invalid && (name.dirty || name.touched)" >
+                        <div *ngIf="name.errors?.['required']"></div>
+                    </div>
+                    <input type="email" name="email" placeholder="Email" required [(ngModel)] = "signupObj.email" #email="ngModel">
+                    <div div class="validation-message" *ngIf="email.invalid && (email.dirty || email.touched)" >
+                        <div *ngIf="email.errors?.['required']"></div>
+                    </div>
+                    <input type="password" name="pswd" placeholder="Password" required [(ngModel)] = "signupObj.password" #password="ngModel">
+                    <div div class="validation-message" *ngIf="password.invalid && (password.dirty || password.touched)" >
+                        <div *ngIf="password.errors?.['required']"></div>
+                    </div>
+
+                    <button (click)="onSignUp()">Register</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="login">
+            <form>
+                <label for="chk" aria-hidden="true">Login</label>
+                <div class = "greeting" *ngIf="loggedInUser">
+                    <p>Hello  <span>{{ loggedInUser.userName }}</span>!</p>
+                </div>
+                <input type="email" name="email" placeholder="Email" required [(ngModel)] = "loginObj.userName">
+                <input type="password" name="pswd" placeholder="Password" required [(ngModel)] = "loginObj.password">
+                <button (click)="onLogin()">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
